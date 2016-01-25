@@ -8,7 +8,6 @@ Author: Daniele Linguaglossa
 check out for updates on https://github.com/dzonerzy/py-forwarder
 
 """
-import Queue
 import argparse
 import select
 import socket
@@ -16,8 +15,9 @@ import sys
 import threading
 import time
 
-from core import MySocket
-from exceptions import ForwardCannotBindAddress, ForwardUpstreamConnect
+from core import *
+from exceptions import *
+
 
 
 class PortForwarder:
@@ -31,7 +31,6 @@ class PortForwarder:
     dumpformat = None
     dumphttp = False
     know_client = []
-    printqueue = Queue.Queue(0)
 
     def __init__(self, config):
         self.dumphttp = config.dump_http_req if config.dump_http_req is not None else None
